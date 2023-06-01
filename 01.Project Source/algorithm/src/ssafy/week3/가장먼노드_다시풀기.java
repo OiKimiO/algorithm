@@ -29,18 +29,22 @@ public class 가장먼노드_다시풀기 {
 
         Queue<Integer> queue = new LinkedList<>();
         queue.add(1);
-
+        arr_bool[1] = true;
+        System.out.println(list);
 
         while(!queue.isEmpty()){
             int number = queue.poll();
             ArrayList<Integer> node = list.get(number);
-            if(!arr_bool[number]){
-                for (int i = 0; i < node.size(); i++) {
-                    arr_bool[number] = true;
-                    queue.add(node.get(i));
-                    distance[number] = distance[number] + 1;
+
+            for (int i = 0; i < node.size(); i++) {
+                int nodeNumber = node.get(i);
+                if(!arr_bool[nodeNumber]){
+                    arr_bool[nodeNumber] = true;
+                    queue.add(nodeNumber);
+                    distance[nodeNumber] = distance[number] + 1;
                 }
             }
+
         }
 
         Arrays.sort(distance);
